@@ -6,6 +6,8 @@ See the capacity left in your AI subscriptions from the macOS menu bar. Click th
 
 <a href="docs/agent-usage.png"><img src="docs/agent-usage-hero.png" alt="Agent Usage popover showing example Claude, Codex and Grok limits" width="570"></a>
 
+The public build with sample usage data. macOS symbols identify Claude, Codex and Grok.
+
 ## Build and run
 
 The app runs on macOS 14 or later. To build it, install Xcode 26 and [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen` with Homebrew). The build script uses XcodeGen to create the project from [project.yml](project.yml) and Xcode to compile the app and Claude status-line helper.
