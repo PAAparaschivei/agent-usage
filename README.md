@@ -4,7 +4,7 @@
 
 See the capacity left in your AI subscriptions from the macOS menu bar. Click the menu bar item for usage windows and reset times. Switch between percentage used and percentage left in the popover.
 
-<img src="docs/agent-usage.png" alt="Agent Usage popover showing example Claude, Codex and Grok limits" width="390">
+<a href="docs/agent-usage.png"><img src="docs/agent-usage-hero.png" alt="Agent Usage popover showing example Claude, Codex and Grok limits" width="570"></a>
 
 ## Build and run
 
