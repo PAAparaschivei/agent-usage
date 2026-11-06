@@ -8,7 +8,7 @@ See the capacity left in your AI subscriptions from the macOS menu bar. Click th
 
 ## Build and run
 
-Requires macOS 14 or later, Xcode 26 and [XcodeGen](https://github.com/yonaskolb/XcodeGen).
+The app runs on macOS 14 or later. To build it, install Xcode 26 and [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen` with Homebrew). The build script uses XcodeGen to create the project from [project.yml](project.yml) and Xcode to compile the app and Claude status-line helper.
 
 ```sh
 git clone https://github.com/PAAparaschivei/agent-usage.git
