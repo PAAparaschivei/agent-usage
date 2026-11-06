@@ -1,0 +1,85 @@
+name: AgentUsage
+options:
+  createIntermediateGroups: true
+  deploymentTarget:
+    macOS: "14.0"
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+
+targets:
+  AgentUsageCore:
+    type: library.static
+    platform: macOS
+    sources: [Native/Shared]
+    settings:
+      base:
+        DEFINES_MODULE: YES
+
+  AgentUsageCollectors:
+    type: library.static
+    platform: macOS
+    sources: [Native/Collectors]
+    dependencies:
+      - target: AgentUsageCore
+    settings:
+      base:
+        DEFINES_MODULE: YES
+
+  AgentUsageClaudeCapture:
+    type: tool
+    platform: macOS
+    sources: [Native/ClaudeCapture]
+    settings:
+      base:
+        PRODUCT_NAME: agent-usage-claude-capture
+
+  AgentUsage:
+    type: application
+    platform: macOS
+    sources:
+      - Native/App
+      - Native/Design
+      - path: Native/Resources/Assets.xcassets
+        buildPhase: resources
+    info:
+      path: Native/App/Info.plist
+      properties:
+        CFBundleShortVersionString: "1.5.0"
+        CFBundleVersion: "6"
+        LSApplicationCategoryType: public.app-category.utilities
+        LSUIElement: true
+    dependencies:
+      - target: AgentUsageCore
+      - target: AgentUsageCollectors
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.aparaschivei.agent-usage
+        PRODUCT_NAME: Agent Usage
+        MARKETING_VERSION: "1.5.0"
+        CURRENT_PROJECT_VERSION: "6"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_HARDENED_RUNTIME: YES
+
+  AgentUsageCoreTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources: [Native/Tests]
+    dependencies:
+      - target: AgentUsageCore
+      - target: AgentUsageCollectors
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.aparaschivei.agent-usage.tests
+
+schemes:
+  AgentUsage:
+    build:
+      targets:
+        AgentUsage: all
+        AgentUsageClaudeCapture: all
+        AgentUsageCoreTests: [test]
+    test:
+      targets: [AgentUsageCoreTests]

@@ -1,0 +1,7 @@
+AgentUsage.xcodeproj/
+.xcode-derived/
+.build/
+dist/
+.env
+.env.*
+.DS_Store
